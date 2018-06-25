@@ -1,0 +1,13 @@
+{
+  "name": "fixed-expenses-before-education",
+  "version": "1.0.0",
+  "description": "take a trade-lines file(s) and make a report",
+  "main": "utils.js",
+  "scripts": {
+    "start": "node index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Timothy Shiu <timoweave@gmail.com>",
+  "license": "ISC"
+}
