@@ -28,15 +28,15 @@ const read_tradelines = async filename => {
     const ok = await existFile(filename);
     const readFile = promisify(fs.readFile);
     const data = await readFile(filename, "utf8");
+    const parseDollar = dollar => parseInt(dollar.replace(/[\$\.]/g, ""));
     const items = data
-      .replace(/[\$\.]/g, "")
       .split("\n")
       .filter(c => c.length > 0)
       .map(c => c.split(" "))
       .map(([due_date, code, subcode, monthly_payment, current_balance]) => ({
         type: trade_type({code: parseInt(code), subcode: parseInt(subcode)}),
-        monthly_payment: parseInt(monthly_payment),
-        current_balance: parseInt(current_balance),
+        monthly_payment: parseDollar(monthly_payment),
+        current_balance: parseDollar(current_balance),
       }));
     return items;
   } catch (err) {
